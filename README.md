@@ -6,6 +6,9 @@ orin@orin-desktop:~$ lsblk
 
 ```
 <pre>
+
+결과
+	
 NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 loop0          7:0    0    16M  1 loop 
 loop1          7:1    0  38.7M  1 loop /snap/snapd/23546
@@ -39,9 +42,11 @@ zram4        252:4    0   635M  0 disk [SWAP]
 zram5        252:5    0   635M  0 disk [SWAP]
 nvme0n1      259:0    0 465.8G  0 disk 
 <pre>
+	
 ``` bash
 orin@orin-desktop:~$ sudo mkfs.ext4 /dev/nvme0n1
 ```
+	<pre>
 [sudo] password for orin: 
 mke2fs 1.46.5 (30-Dec-2021)
 Discarding device blocks: done                            
@@ -56,15 +61,19 @@ Allocating group tables: done
 Writing inode tables: done                            
 Creating journal (262144 blocks): done
 Writing superblocks and filesystem accounting information: done     
-
+<pre>
+	
 ``` bash
 orin@orin-desktop:~$ sudo mkdir -p /mnt/nvme
 orin@orin-desktop:~$ sudo mount /dev/nvme0n1 /mnt/nvme
 orin@orin-desktop:~$ sudo rsync -axHAWXS --numeric-ids --info=progress2 / /mnt/nvme
 
 ```
+	``` bash
 sudo gedit /mnt/nvme/etc/fstab
 orin@orin-desktop:~$ cat /mnt/nvme/etc/fstab
+```
+	<pre>
 # /etc/fstab: static file system information.
 #
 # <file system> <mount point> <type> <options> <dump> <pass>
@@ -74,22 +83,27 @@ orin@orin-desktop:~$ cat /mnt/nvme/etc/fstab
 UUID=bd14adc2-04ff-4b84-bcb0-815102a019b3 / ext4 defaults 0 1
 # UEFI 부팅을 사용하는 경우, 부트 파티션 유지
 UUID=3FFC-5543 /boot/efi vfat defaults 0 1
-
+<pre>
+	
 orin@orin-desktop:~$ sudo mount --bind /dev /mnt/nvme/dev
+
+<pre>
 sudo mount --bind /proc /mnt/nvme/proc
 sudo mount --bind /sys /mnt/nvme/sys
 sudo mount /dev/mmcblk0p10 /mnt/nvme/boot/efi
 sudo chroot /mnt/nvme
 root@orin-desktop:/# update-initramfs -u -k all
 exit
-
+<pre>
 
 orin@orin-desktop:~$ sudo umount /mnt/nvme/boot/efi
+<pre>
+	``` bash
 sudo umount /mnt/nvme/dev
 sudo umount /mnt/nvme/proc
 sudo umount /mnt/nvme/sys
 sudo umount /mnt/nvme
 sudo reboot
-
+```
 
 
