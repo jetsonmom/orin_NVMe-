@@ -8,12 +8,19 @@ orin@orin-desktop:~$ lsblk
 ######	 결과
 	
 NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+
 loop0          7:0    0    16M  1 loop 
+
 loop1          7:1    0  38.7M  1 loop /snap/snapd/23546
+
 loop2          7:2    0  68.8M  1 loop /snap/core22/1752
+
 loop3          7:3    0     4K  1 loop /snap/bare/5
+
 loop4          7:4    0  64.7M  1 loop /snap/cups/1069
+
 loop5          7:5    0  91.7M  1 loop /snap/gtk-common-themes/1535
+
 loop6          7:6    0 175.3M  1 loop /snap/chromium/3046
 loop7          7:7    0 493.5M  1 loop /snap/gnome-42-2204/201
 mmcblk0      179:0    0  59.7G  0 disk 
