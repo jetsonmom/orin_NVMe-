@@ -29,7 +29,7 @@ Allocating group tables: done
 Writing inode tables: done                            
 Creating journal (262144 blocks): done
 Writing superblocks and filesystem accounting information: done     
-<pre>
+
 	
 ``` bash
 orin@orin-desktop:~$ sudo mkdir -p /mnt/nvme
