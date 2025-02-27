@@ -3,7 +3,7 @@
 
 ```bash
 orin@orin-desktop:~$ lsblk
-	
+```
 ```
 	 결과
 	
@@ -39,7 +39,7 @@ zram3        252:3    0   635M  0 disk [SWAP]
 zram4        252:4    0   635M  0 disk [SWAP]
 zram5        252:5    0   635M  0 disk [SWAP]
 nvme0n1      259:0    0 465.8G  0 disk 
-
+```
 	
 ```bash
 sudo mkfs.ext4 /dev/nvme0n1
