@@ -78,37 +78,94 @@ sudo reboot
 ```bash
 orin@orin-desktop:~$ lsblk
 ```
+![image](https://github.com/user-attachments/assets/4e20025b-c33b-442b-befa-3f77bd8f7114)
 
-NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
-loop0          7:0    0     4K  1 loop /snap/bare/5
-loop1          7:1    0 175.3M  1 loop /snap/chromium/3046
-loop2          7:2    0  68.8M  1 loop /snap/core22/1752
-loop3          7:3    0  64.7M  1 loop /snap/cups/1069
-loop4          7:4    0 493.5M  1 loop /snap/gnome-42-2204/201
-loop5          7:5    0  91.7M  1 loop /snap/gtk-common-themes/1535
-loop6          7:6    0  38.7M  1 loop /snap/snapd/23546
-loop7          7:7    0    16M  1 loop 
-mmcblk0      179:0    0  59.6G  0 disk 
-├─mmcblk0p1  179:1    0  58.2G  0 part /
-├─mmcblk0p2  179:2    0   128M  0 part 
-├─mmcblk0p3  179:3    0   768K  0 part 
-├─mmcblk0p4  179:4    0  31.6M  0 part 
-├─mmcblk0p5  179:5    0   128M  0 part 
-├─mmcblk0p6  179:6    0   768K  0 part 
-├─mmcblk0p7  179:7    0  31.6M  0 part 
-├─mmcblk0p8  179:8    0    80M  0 part 
-├─mmcblk0p9  179:9    0   512K  0 part 
-├─mmcblk0p10 179:10   0    64M  0 part /boot/efi
-├─mmcblk0p11 179:11   0    80M  0 part 
-├─mmcblk0p12 179:12   0   512K  0 part 
-├─mmcblk0p13 179:13   0    64M  0 part 
-├─mmcblk0p14 179:14   0   400M  0 part 
-└─mmcblk0p15 179:15   0 479.5M  0 part 
-zram0        252:0    0   635M  0 disk [SWAP]
-zram1        252:1    0   635M  0 disk [SWAP]
-zram2        252:2    0   635M  0 disk [SWAP]
-zram3        252:3    0   635M  0 disk [SWAP]
-zram4        252:4    0   635M  0 disk [SWAP]
-zram5        252:5    0   635M  0 disk [SWAP]
-nvme0n1      259:0    0 465.8G  0 disk 
+```bash
+orin@orin-desktop:~$ sudo mkdir -p /mnt/data
+```
+[sudo] password for orin: 
 
+```bash
+orin@orin-desktop:~$ sudo mount /dev/nvme0n1 /mnt/data
+```
+![image](https://github.com/user-attachments/assets/c676da3f-469f-481b-93a7-a0d9ebeeb2a5)
+
+```bash
+orin@orin-desktop:~$ sudo parted /dev/nvme0n1 mkpart primary ext4 0% 100% 
+```
+Information: You may need to update /etc/fstab.
+
+```bash
+orin@orin-desktop:~$ sudo mkfs.ext4 /dev/nvme0n1p1
+```
+![image](https://github.com/user-attachments/assets/a29e8614-fa94-4607-90e1-fa959d437e63)
+
+```bash
+orin@orin-desktop:~$ sudo mount /dev/nvme0n1p1 /mnt/data
+orin@orin-desktop:~$ df -h /mnt/data
+```
+![image](https://github.com/user-attachments/assets/7d5cd95e-adc5-4a48-9e94-348c3e4e6f7b)
+
+설치 정상이므로 
+
+# DeepStream 설치 디렉토리 준비
+
+```bash
+orin@orin-desktop:~$ mkdir -p /mnt/data/projects
+orin@orin-desktop:~$ cd /mnt/data/projects
+
+orin@orin-desktop:~$ sudo apt update
+```
+
+# DeepStream에 필요한 종속성 설치
+```bash
+orin@orin-desktop:~$ sudo apt install -y \
+    libssl3 \
+    libjansson4 \
+    libjson-glib-1.0-0 \
+    libgstreamer1.0-0 \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-plugins-ugly \
+    gstreamer1.0-tools \
+    gstreamer1.0-libav
+```
+다운로드한 후 # 다운로드 폴더에서 SSD로 파일 이동
+deepstream_sdk_v7.1.0 다운로드 링크.
+```bash
+https://catalog.ngc.nvidia.com/orgs/nvidia/resources/deepstream/files
+orin@orin-desktop:/mnt/data/projects$ cd
+orin@orin-desktop:~$ cd Downloads
+orin@orin-desktop:~/Downloads$ ls
+```
+deepstream_sdk_v7.1.0_jetson.tbz2
+
+cd /mnt/data/projects # 압축 파일 해제 tar -xvf deepstream_sdk_v7.1.0_jetson.tbz2
+
+```bash
+orin@orin-desktop:/mnt/data/projects$ tar -xvf deepstream_sdk_v7.1.0_jetson.tbz2
+opt/
+
+orin@orin-desktop:/mnt/data/projects$ ls
+```
+deepstream_sdk_v7.1.0_jetson.tbz2  opt
+
+![image](https://github.com/user-attachments/assets/4bbde509-0188-4aa4-94a6-e3dad2717f7c)
+
+```bash
+sudo apt-get install tree
+```
+![image](https://github.com/user-attachments/assets/52950219-ea0a-4647-b147-767f8e140469)
+
+```bash
+orin@orin-desktop:/mnt/data/projects$ cp -r /mnt/data/projects/opt/nvidia/deepstream/deepstream-7.1/samples/models /mnt/data/projects/test5
+
+orin@orin-desktop:/mnt/data/projects$ cp -r /mnt/data/projects/opt/nvidia/deepstream/deepstream-7.1/samples/configs/deepstream-app/config_infer_primary.txt /mnt/data/projects/test5
+
+orin@orin-desktop:/mnt/data/projects$ cp -r /mnt/data/projects/opt/nvidia/deepstream/deepstream-7.1/samples/configs/deepstream-app/config_infer_secondary_vehiclemake.txt /mnt/data/projects/test5
+
+orin@orin-desktop:/mnt/data/projects$ cp -r /mnt/data/projects/opt/nvidia/deepstream/deepstream-7.1/samples/configs/deepstream-app/config_infer_secondary_vehicletypes.txt /mnt/data/projects/test5
+
+orin@orin-desktop:/mnt/data/projects$ cp -r /mnt/data/projects/opt/nvidia/deepstream/deepstream-7.1/sources/apps/sample_apps/deepstream-test5/configs/test5_dec_infer-resnet_tracker_sgie_tiled_display_int8.txt /mnt/data/projects/test5
+```
