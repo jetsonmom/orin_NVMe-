@@ -3,10 +3,9 @@
 
 ```bash
 orin@orin-desktop:~$ lsblk
-
+	
 ```
-
-<b> 결과
+	 결과
 	
 NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 loop0          7:0    0    16M  1 loop 
