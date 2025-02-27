@@ -39,18 +39,21 @@ orin@orin-desktop:~$ sudo rsync -axHAWXS --numeric-ids --info=progress2 / /mnt/n
 
 ```bash
 sudo gedit /mnt/nvme/etc/fstab
-orin@orin-desktop:~$ cat /mnt/nvme/etc/fstab
 ```
-	
-# /etc/fstab: static file system information.
-#
-# <file system> <mount point> <type> <options> <dump> <pass>
-# 기존 eMMC 루트 파일 시스템 주석 처리
-# /dev/root            /                     ext4           defaults                                     0 1
-# NVMe를 루트 파일 시스템으로 설정
+아래 내용 집어넣고 save
+
+```
 UUID=bd14adc2-04ff-4b84-bcb0-815102a019b3 / ext4 defaults 0 1
 # UEFI 부팅을 사용하는 경우, 부트 파티션 유지
 UUID=3FFC-5543 /boot/efi vfat defaults 0 1
+```
+``` 
+orin@orin-desktop:~$ cat /mnt/nvme/etc/fstab
+```
+	
+##### /etc/fstab: static file system information.
+
+
 
  ```bash
 orin@orin-desktop:~$ sudo mount --bind /dev /mnt/nvme/dev
