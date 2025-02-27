@@ -36,7 +36,7 @@ orin@orin-desktop:~$ sudo mkdir -p /mnt/nvme
 orin@orin-desktop:~$ sudo mount /dev/nvme0n1 /mnt/nvme
 orin@orin-desktop:~$ sudo rsync -axHAWXS --numeric-ids --info=progress2 / /mnt/nvme
 
-```
+
 	``` bash
 sudo gedit /mnt/nvme/etc/fstab
 orin@orin-desktop:~$ cat /mnt/nvme/etc/fstab
