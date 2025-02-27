@@ -7,38 +7,8 @@ orin@orin-desktop:~$ lsblk
 
 ######	 결과
 	
-NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS 
-loop0          7:0    0    16M  1 loop  
-loop1          7:1    0  38.7M  1 loop /snap/snapd/23546 
-loop2          7:2    0  68.8M  1 loop /snap/core22/1752 
-loop3          7:3    0     4K  1 loop /snap/bare/5 
-loop4          7:4    0  64.7M  1 loop /snap/cups/1069
-loop5          7:5    0  91.7M  1 loop /snap/gtk-common-themes/1535
-loop6          7:6    0 175.3M  1 loop /snap/chromium/3046
-loop7          7:7    0 493.5M  1 loop /snap/gnome-42-2204/201
-mmcblk0      179:0    0  59.7G  0 disk 
-├─mmcblk0p1  179:1    0  58.2G  0 part /
-├─mmcblk0p2  179:2    0   128M  0 part 
-├─mmcblk0p3  179:3    0   768K  0 part 
-├─mmcblk0p4  179:4    0  31.6M  0 part 
-├─mmcblk0p5  179:5    0   128M  0 part 
-├─mmcblk0p6  179:6    0   768K  0 part 
-├─mmcblk0p7  179:7    0  31.6M  0 part 
-├─mmcblk0p8  179:8    0    80M  0 part 
-├─mmcblk0p9  179:9    0   512K  0 part 
-├─mmcblk0p10 179:10   0    64M  0 part /boot/efi
-├─mmcblk0p11 179:11   0    80M  0 part 
-├─mmcblk0p12 179:12   0   512K  0 part 
-├─mmcblk0p13 179:13   0    64M  0 part 
-├─mmcblk0p14 179:14   0   400M  0 part 
-└─mmcblk0p15 179:15   0 479.5M  0 part 
-zram0        252:0    0   635M  0 disk [SWAP]
-zram1        252:1    0   635M  0 disk [SWAP]
-zram2        252:2    0   635M  0 disk [SWAP]
-zram3        252:3    0   635M  0 disk [SWAP]
-zram4        252:4    0   635M  0 disk [SWAP]
-zram5        252:5    0   635M  0 disk [SWAP]
-nvme0n1      259:0    0 465.8G  0 disk 
+![image](https://github.com/user-attachments/assets/df9ebaf8-8c62-4265-8f31-6dd29389ffa9)
+
 
 	
 ```bash
