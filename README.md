@@ -5,7 +5,7 @@
 orin@orin-desktop:~$ lsblk
 
 ```
-<pre>
+<b>
 
 결과
 	
