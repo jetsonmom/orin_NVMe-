@@ -7,7 +7,7 @@ orin@orin-desktop:~$ lsblk
 ```
 
 
-<b>결과
+<pre>결과
 	
 NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 loop0          7:0    0    16M  1 loop 
@@ -43,10 +43,10 @@ zram5        252:5    0   635M  0 disk [SWAP]
 nvme0n1      259:0    0 465.8G  0 disk 
 <pre>
 	
-``` bash
+
 orin@orin-desktop:~$ sudo mkfs.ext4 /dev/nvme0n1
-```
-	<pre>
+
+
 [sudo] password for orin: 
 mke2fs 1.46.5 (30-Dec-2021)
 Discarding device blocks: done                            
