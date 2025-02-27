@@ -43,9 +43,9 @@ zram5        252:5    0   635M  0 disk [SWAP]
 nvme0n1      259:0    0 465.8G  0 disk 
 <pre>
 	
-**
-orin@orin-desktop:~$ sudo mkfs.ext4 /dev/nvme0n1
-**
+```bash
+sudo mkfs.ext4 /dev/nvme0n1
+```
 
 [sudo] password for orin: 
 mke2fs 1.46.5 (30-Dec-2021)
