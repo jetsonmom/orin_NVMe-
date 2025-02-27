@@ -1,7 +1,7 @@
 # orin_NVMe-
 
 
-``` bash
+```bash
 orin@orin-desktop:~$ lsblk
 
 ```
