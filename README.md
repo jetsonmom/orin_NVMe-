@@ -3,7 +3,10 @@
 
 ``` bash
 orin@orin-desktop:~$ lsblk
+
 ```
+
+######
 NAME         MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 loop0          7:0    0    16M  1 loop 
 loop1          7:1    0  38.7M  1 loop /snap/snapd/23546
