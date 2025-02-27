@@ -75,3 +75,22 @@ orin@orin-desktop:~$ cat /mnt/nvme/etc/fstab
 UUID=bd14adc2-04ff-4b84-bcb0-815102a019b3 / ext4 defaults 0 1
 # UEFI 부팅을 사용하는 경우, 부트 파티션 유지
 UUID=3FFC-5543 /boot/efi vfat defaults 0 1
+
+orin@orin-desktop:~$ sudo mount --bind /dev /mnt/nvme/dev
+sudo mount --bind /proc /mnt/nvme/proc
+sudo mount --bind /sys /mnt/nvme/sys
+sudo mount /dev/mmcblk0p10 /mnt/nvme/boot/efi
+sudo chroot /mnt/nvme
+root@orin-desktop:/# update-initramfs -u -k all
+exit
+
+
+orin@orin-desktop:~$ sudo umount /mnt/nvme/boot/efi
+sudo umount /mnt/nvme/dev
+sudo umount /mnt/nvme/proc
+sudo umount /mnt/nvme/sys
+sudo umount /mnt/nvme
+sudo reboot
+
+
+
